@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome DevTools MCP Server - 技术详解</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">DevFest 2025</div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="gdg-devfest.html">GDG & DevFest</a></li>
+                <li><a href="devtools-mcp.html" class="active">DevTools MCP</a></li>
+                <li><a href="about-leon.html">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Chrome DevTools MCP Server</h1>
+            <p>让 AI 助手控制浏览器的魔法</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="content-block">
+                <h2>什么是 Chrome DevTools MCP Server？</h2>
+                <p><strong>Chrome DevTools MCP Server</strong> 是一个基于 Model Context Protocol (MCP) 的服务器实现，它让 AI 助手能够通过标准化接口控制和检查 Chrome 浏览器。</p>
+                <p>简单来说，就是给 AI 助手装上"眼睛"和"手"，让它能够：</p>
+                <ul class="feature-list">
+                    <li>打开网页、点击按钮、填写表单</li>
+                    <li>截图、录制性能数据、分析网络请求</li>
+                    <li>检查控制台错误、调试 JavaScript 代码</li>
+                    <li>自动化测试、爬取数据、生成报告</li>
+                </ul>
+            </div>
+
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80" alt="浏览器开发者工具与代码界面" loading="lazy">
+            </div>
+
+            <div class="content-block">
+                <h2>核心技术栈</h2>
+                <div class="tech-detail-grid">
+                    <div class="tech-detail-card">
+                        <h3>Chrome DevTools Protocol (CDP)</h3>
+                        <p>Chrome 浏览器暴露的底层调试协议，提供了对浏览器的完全控制能力。</p>
+                        <ul>
+                            <li>Page - 页面导航和生命周期管理</li>
+                            <li>Network - 网络请求监控和拦截</li>
+                            <li>Performance - 性能追踪和分析</li>
+                            <li>DOM - 文档对象模型操作</li>
+                            <li>Console - 控制台日志和错误</li>
+                        </ul>
+                    </div>
+                    <div class="tech-detail-card">
+                        <h3>Model Context Protocol (MCP)</h3>
+                        <p>一个开放标准，让 AI 助手能够通过统一接口调用外部工具和服务。</p>
+                        <ul>
+                            <li>标准化的工具调用协议</li>
+                            <li>支持多种 AI 助手平台</li>
+                            <li>可扩展的插件架构</li>
+                            <li>安全的权限管理</li>
+                            <li>实时双向通信</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block highlight-block">
+                <h2>架构设计</h2>
+                <div class="architecture-diagram">
+                    <div class="arch-layer">
+                        <div class="arch-box">AI 助手 (Claude / GPT / Gemini)</div>
+                    </div>
+                    <div class="arch-arrow">↓ MCP 协议 ↓</div>
+                    <div class="arch-layer">
+                        <div class="arch-box">MCP Server (工具层)</div>
+                    </div>
+                    <div class="arch-arrow">↓ CDP 协议 ↓</div>
+                    <div class="arch-layer">
+                        <div class="arch-box">Chrome 浏览器</div>
+                    </div>
+                </div>
+                <p class="arch-description">
+                    AI 助手通过 MCP 协议向 Server 发送指令（如"打开网页"），Server 将指令转换为 CDP 命令发送给 Chrome，Chrome 执行操作后返回结果。整个过程对 AI 助手透明，它只需要知道有哪些工具可用，而不需要关心底层实现。
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h2>能做什么？实际应用场景</h2>
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🧪</div>
+                        <h3>自动化测试</h3>
+                        <p>AI 助手可以自动执行测试用例：打开网页、填写表单、点击按钮、验证结果。比人工测试快，比传统脚本更灵活。</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">📊</div>
+                        <h3>性能分析</h3>
+                        <p>录制页面加载的性能数据，分析 LCP、CLS、FCP 等核心指标，找出性能瓶颈，给出优化建议。</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🐛</div>
+                        <h3>Bug 调试</h3>
+                        <p>检查控制台错误、网络请求失败、JavaScript 异常，帮助开发者快速定位问题。</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">📸</div>
+                        <h3>截图和录制</h3>
+                        <p>自动截取页面截图、录制用户操作流程，用于文档编写或问题复现。</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🔍</div>
+                        <h3>网页爬取</h3>
+                        <p>智能提取网页内容，处理动态加载、表单交互、分页等复杂场景。</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">📝</div>
+                        <h3>生成报告</h3>
+                        <p>自动生成测试报告、性能分析报告、无障碍检查报告，节省人工整理时间。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>核心功能演示</h2>
+                <div class="demo-section">
+                    <div class="demo-card">
+                        <h3>1. 页面导航和快照</h3>
+                        <pre><code>// AI 助手发送指令
+"打开 https://example.com 并截图"
+
+// MCP Server 执行
+- 启动 Chrome 浏览器
+- 导航到目标 URL
+- 等待页面加载完成
+- 截取页面快照
+- 返回图片给 AI 助手</code></pre>
+                    </div>
+                    <div class="demo-card">
+                        <h3>2. 性能追踪</h3>
+                        <pre><code>// AI 助手发送指令
+"分析这个页面的性能"
+
+// MCP Server 执行
+- 开启 Performance 录制
+- 重新加载页面
+- 停止录制
+- 分析 LCP、CLS、FCP 指标
+- 给出优化建议</code></pre>
+                    </div>
+                    <div class="demo-card">
+                        <h3>3. 表单自动化</h3>
+                        <pre><code>// AI 助手发送指令
+"填写登录表单并提交"
+
+// MCP Server 执行
+- 定位用户名输入框，输入文本
+- 定位密码输入框，输入文本
+- 点击登录按钮
+- 等待页面跳转
+- 返回执行结果</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block highlight-block">
+                <h2>为什么这个技术有价值？</h2>
+                <div class="value-points">
+                    <div class="value-point">
+                        <h3>🚀 降低自动化门槛</h3>
+                        <p>传统的浏览器自动化需要编写大量脚本和维护选择器。有了 AI 助手，你可以用自然语言描述需求，AI 自动生成执行逻辑。</p>
+                    </div>
+                    <div class="value-point">
+                        <h3>🧠 智能化决策</h3>
+                        <p>AI 助手可以根据页面状态做出判断：比如"如果出现验证码就跳过"、"如果加载超时就重试"，而不需要硬编码所有情况。</p>
+                    </div>
+                    <div class="value-point">
+                        <h3>🔗 标准化接口</h3>
+                        <p>MCP 是一个开放标准，意味着你写的工具可以被任何支持 MCP 的 AI 助手调用（Claude、GPT、Gemini 等），不需要为每个平台单独适配。</p>
+                    </div>
+                    <div class="value-point">
+                        <h3>💡 探索 AI Agent 的未来</h3>
+                        <p>这不只是一个工具，而是 AI Agent 时代的一个缩影：AI 不再只是聊天，而是真正能够操作工具、完成任务的"数字员工"。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>技术挑战和解决方案</h2>
+                <div class="challenge-grid">
+                    <div class="challenge-card">
+                        <h3>挑战 1: 异步操作管理</h3>
+                        <p><strong>问题</strong>：CDP 协议是异步的，需要等待页面加载、元素出现、网络请求完成。</p>
+                        <p><strong>解决</strong>：使用 Promise 和 async/await 管理异步流程，结合超时和重试机制。</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h3>挑战 2: 元素定位</h3>
+                        <p><strong>问题</strong>：如何准确定位页面元素（按钮、输入框等）？</p>
+                        <p><strong>解决</strong>：结合无障碍树（Accessibility Tree）和 DOM 查询，让 AI 助手能够理解页面结构。</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h3>挑战 3: 错误处理</h3>
+                        <p><strong>问题</strong>：网络异常、页面崩溃、超时等不可预期的错误。</p>
+                        <p><strong>解决</strong>：完善的错误捕获和上报机制，让 AI 助手知道哪里出错了，而不是静默失败。</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h3>挑战 4: 安全性</h3>
+                        <p><strong>问题</strong>：AI 助手控制浏览器可能带来安全风险。</p>
+                        <p><strong>解决</strong>：沙箱环境、权限控制、操作日志，确保只有授权的操作被执行。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>想了解 Workshop 的讲师？</h2>
+                <p>接下来，认识一下这次 Workshop 的主讲人 Leon，看看他是怎样的技术背景和经历。</p>
+                <a href="about-leon.html" class="btn btn-primary">认识 Leon</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Leon | Google DevFest Workshop</p>
+            <div class="footer-links">
+                <a href="https://github.com/Leon-Algo" target="_blank">GitHub</a>
+                <a href="https://www.cnblogs.com/Leon-Algo" target="_blank">技术博客</a>
+                <a href="mailto:2594041827@qq.com">联系我</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
