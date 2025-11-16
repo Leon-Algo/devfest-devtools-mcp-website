@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leon · 控制室中的人</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="art-styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="signal-column"></div>
+    <div class="background-grid"></div>
+    <div class="background-noise"></div>
+
+    <header class="top-bar">
+      <div class="brand-mark">
+        <div class="brand-orbit">
+          <span class="orbit-node orbit-node--ai"></span>
+          <span class="orbit-node orbit-node--browser"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-subtitle">DevFest 控制室</span>
+          <span class="brand-title">Leon · 控制室中的人</span>
+        </div>
+      </div>
+      <div class="meta-info">
+        <span class="meta-pill meta-pill--place"><i class="ri-user-6-line"></i> AI 算法工程师</span>
+        <span class="meta-pill meta-pill--time"><i class="ri-map-pin-line"></i> 深圳 & 武汉</span>
+        <a href="art-index.html" class="btn-ghost" style="font-size:11px;padding-inline:10px;">返回控制室</a>
+      </div>
+    </header>
+
+    <main class="hero-lab">
+      <section class="panel panel--soft">
+        <div class="panel-header">
+          <h1 class="panel-title">你好，我是 Leon</h1>
+          <p class="panel-subtitle">25 岁 · AI 算法工程师 · 在研究、工程与长期追求之间寻找平衡。</p>
+        </div>
+        <div class="panel-grid panel-grid--profile">
+          <article class="panel-card panel-card--profile">
+            <h3 class="panel-card-title">技术要落在真实场景上</h3>
+            <p>我相信技术的价值在于「能不能真正帮到人」，而不是堆砌概念、追逐短暂热点。
+              4 次国赛获奖、SCI 论文、专利，是进入这个行业的起点，而不是终点。</p>
+            <p>这次 DevTools MCP Workshop 对我来说，是一次把「AI 工程工具」拉到真实工作场景里的尝试：
+              看看它是否真的能改善调试、测试和部署的链路。</p>
+          </article>
+          <aside class="panel-card panel-card--contacts">
+            <h3 class="panel-card-title"><i class="ri-link-m"></i> 一些坐标</h3>
+            <ul class="contact-list">
+              <li><span>GitHub</span><a href="https://github.com/Leon-Algo" target="_blank" rel="noreferrer">@Leon-Algo</a></li>
+              <li><span>Blog</span><a href="https://www.cnblogs.com/Leon-Algo" target="_blank" rel="noreferrer">技术博客</a></li>
+              <li><span>Email</span><a href="mailto:2594041827@qq.com">2594041827@qq.com</a></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="stack">
+        <div class="panel-header">
+          <h2 class="panel-title">我常用的技术栈</h2>
+          <p class="panel-subtitle">从模型到工程，再到工具链。</p>
+        </div>
+        <div class="panel-grid panel-grid--asymmetric">
+          <article class="panel-card">
+            <h3 class="panel-card-title">AI / 机器学习</h3>
+            <p>深度学习框架：TensorFlow, PyTorch</p>
+            <p>传统机器学习：SVM, XGBoost，与数据挖掘和分析结合。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">LLM / AI Agent</h3>
+            <p>RAG 架构设计、Prompt 工程、Agent 框架（如 LangChain、CrewAI），
+              关注如何把模型能力嵌入实际业务流程。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">模型评估</h3>
+            <p>BLEU、METEOR、BERTScore 等指标，用来衡量生成质量和任务完成度，
+              避免只看「主观感觉」。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel--soft" id="pursuits">
+        <div class="panel-header">
+          <h2 class="panel-title">我在追求什么</h2>
+          <p class="panel-subtitle">比起「知道很多」，我更在意「能沉淀下来什么」。</p>
+        </div>
+        <div class="panel-grid panel-grid--asymmetric">
+          <article class="panel-card">
+            <h3 class="panel-card-title">🎯 社会影响力</h3>
+            <p>希望自己做的东西能被更多人看到、使用，并产生实际影响——哪怕只是改善了一小块开发体验。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">🚀 技术成就</h3>
+            <p>练就一两项真正拿得出手的「绝活」，而不是在每个方向都浅尝辄止。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">⚖️ 理性决策</h3>
+            <p>接受成就与风险共存，但在关键决策上，尽量通过准备和试错来对冲运气。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="life">
+        <div class="panel-header">
+          <h2 class="panel-title">工作之外的坐标</h2>
+          <p class="panel-subtitle">保持好奇，也保留一点慢下来的空间。</p>
+        </div>
+        <div class="panel-grid panel-grid--asymmetric">
+          <article class="panel-card">
+            <h3 class="panel-card-title">📷 摄影</h3>
+            <p>用 DJI AIR3 和小米 15 Ultra 拍城市与自然。喜欢黄金分割、线条引导和留白，
+              也喜欢在人群里捕捉一些不经意的瞬间。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">📚 阅读与观影</h3>
+            <p>会看 42 章经博客、《非暴力沟通》、诺兰电影等内容，既有技术，也有对人的理解。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">🎮 收藏癖</h3>
+            <p>喜欢收藏有用的视频、文章、小工具和好玩的游戏，「可以不用，但不能没有」。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel--soft" id="why-workshop">
+        <div class="panel-header">
+          <h2 class="panel-title">为什么做这次 DevTools MCP Workshop？</h2>
+          <p class="panel-subtitle">因为我好奇：AI 工程工具，能否真正改变开发者的日常？</p>
+        </div>
+        <article class="panel-card">
+          <p>Chrome DevTools MCP Server 把 AI Agent 和浏览器自动化接在了一起，实用性很强。
+            DevFest 这样的大型活动，是验证这类工具是否「站得住脚」的好机会。</p>
+          <p>我希望这次 Workshop 不只是讲原理，而是让参与者带走一条完整的实践路径，
+            也欢迎你在活动之后继续和我交流想法、反馈和新的可能性。</p>
+        </article>
+      </section>
+
+      <section class="panel" id="cta">
+        <div class="panel-header">
+          <h2 class="panel-title">下一步，回到控制室</h2>
+          <p class="panel-subtitle">你可以回到路径视图，或者继续从 DevTools MCP 的角度探索。</p>
+        </div>
+        <div class="hero-actions" style="margin-top:10px;">
+          <a href="art-index.html#pathway" class="btn-primary">回看完整路径</a>
+          <a href="art-devtools-mcp.html" class="btn-ghost">继续技术视角</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <span>Leon · 控制室中的人</span>
+      </div>
+      <div class="footer-right">
+        <a href="art-index.html">控制室首页</a>
+        <a href="art-devtools-mcp.html">DevTools MCP</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

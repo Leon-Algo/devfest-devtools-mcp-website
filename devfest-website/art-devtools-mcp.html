@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevTools MCP · 工具编排层</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="art-styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="signal-column"></div>
+    <div class="background-grid"></div>
+    <div class="background-noise"></div>
+
+    <header class="top-bar">
+      <div class="brand-mark">
+        <div class="brand-orbit">
+          <span class="orbit-node orbit-node--ai"></span>
+          <span class="orbit-node orbit-node--browser"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-subtitle">DevFest 控制室</span>
+          <span class="brand-title">DevTools MCP 工具编排层</span>
+        </div>
+      </div>
+      <div class="meta-info">
+        <span class="meta-pill meta-pill--place"><i class="ri-terminal-window-line"></i> 调试控制台</span>
+        <span class="meta-pill meta-pill--time"><i class="ri-cpu-line"></i> MCP Server</span>
+        <a href="art-index.html" class="btn-ghost" style="font-size:11px;padding-inline:10px;">返回控制室</a>
+      </div>
+    </header>
+
+    <main class="hero-lab">
+      <section class="panel panel--soft">
+        <div class="panel-header">
+          <h1 class="panel-title">什么是 DevTools MCP Server？</h1>
+          <p class="panel-subtitle">在 AI 与浏览器之间，插入一层“可编排的工具控制台”。</p>
+        </div>
+        <div class="panel-grid panel-grid--asymmetric">
+          <article class="panel-card">
+            <p><strong>Chrome DevTools MCP Server</strong> 是一个基于 Model Context Protocol (MCP) 的服务器，它把
+              Chrome DevTools
+              能力暴露为一组可被 AI 调用的工具。</p>
+            <p>从 AI 的视角看，它不需要关心 CDP 的细节——它只知道有一些命令：
+              <em>打开页面、截屏、录制性能 Trace、抓取 DOM、检查 Console</em> ……
+              Server 负责把这些命令翻译成 CDP 调用并送给浏览器。</p>
+          </article>
+          <article class="panel-card panel-card--code">
+            <div class="code-label">示意 · AI 与 DevTools MCP 的对话</div>
+            <pre class="code-block"><code>// AI 侧的任务描述
+"检查这个页面的性能和错误，并给出可执行的优化建议"
+
+// DevTools MCP Server 负责：
+- 打开目标 URL
+- 录制性能 Trace
+- 分析 LCP / CLS / FCP
+- 收集 Console 与 Network 错误
+- 把结构化结果喂回 AI</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="stack">
+        <div class="panel-header">
+          <h2 class="panel-title">核心技术栈：CDP × MCP</h2>
+          <p class="panel-subtitle">一层直接控制浏览器，一层负责向 AI 报告「世界的状态」。</p>
+        </div>
+        <div class="panel-grid panel-grid--timeline">
+          <div class="timeline-column">
+            <div class="timeline-node">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <h3 class="timeline-title">Chrome DevTools Protocol (CDP)</h3>
+                <p>Chrome 暴露的底层调试协议，提供：</p>
+                <p>· Page：页面导航、加载状态
+                  <br>· Network：请求与响应
+                  <br>· Performance：性能指标与 Trace
+                  <br>· DOM：文档结构操作
+                  <br>· Console：日志与错误捕获</p>
+              </div>
+            </div>
+            <div class="timeline-node">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <h3 class="timeline-title">Model Context Protocol (MCP)</h3>
+                <p>把这些 CDP 能力包装成 AI 能理解的工具接口：
+                  定义工具名、参数与返回值，让 AI 在「上下文」中自然调用。</p>
+              </div>
+            </div>
+          </div>
+          <aside class="panel-card panel-card--highlight">
+            <h3 class="panel-card-title">架构一眼看懂</h3>
+            <p>你可以把 DevTools MCP Server 看成是：</p>
+            <p>AI ⇄ <strong>MCP 工具层</strong> ⇄ CDP ⇄ Chrome 浏览器</p>
+            <p>AI 和浏览器之间的沟通，都收束到这一层「工具编排层」上来。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="use-cases">
+        <div class="panel-header">
+          <h2 class="panel-title">在控制室里，DevTools MCP 能做什么？</h2>
+          <p class="panel-subtitle">把常见的浏览器调试任务，变成可组合的工具指令。</p>
+        </div>
+        <div class="panel-grid panel-grid--asymmetric">
+          <article class="panel-card">
+            <h3 class="panel-card-title"><i class="ri-bug-line"></i> 自动化调试</h3>
+            <p>AI 自动执行多组操作：打开不同页面、触发关键交互、检查 Console 与 Network 错误，
+              收集结果后整理出「问题列表 + 可能原因」。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title"><i class="ri-pulse-line"></i> 性能体检</h3>
+            <p>定时对核心页面跑性能 Trace，记录 LCP / CLS / TTFB 等指标，
+              生成对比报告，提示是否存在「版本回退」或「新增瓶颈」。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title"><i class="ri-layout-3-line"></i> DOM / 可视化快照</h3>
+            <p>抓取 DOM 结构和可视化截图，帮助你在 Chat 窗里就能「看到页面长什么样」。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title"><i class="ri-file-chart-line"></i> 报告与复盘</h3>
+            <p>把上述信息整合成测试报告、性能报告，或为 DevFest 这样的活动输出复盘材料。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel--soft" id="challenges">
+        <div class="panel-header">
+          <h2 class="panel-title">工程挑战：让控制室稳定运转</h2>
+          <p class="panel-subtitle">从协议细节到工程实践，DevTools MCP Server 也有自己的「运维工作」要做。</p>
+        </div>
+        <div class="panel-grid panel-grid--asymmetric">
+          <article class="panel-card">
+            <h3 class="panel-card-title">异步与超时</h3>
+            <p>CDP 是强异步的：页面加载、网络请求、事件触发都需要等待。
+              需要合理管理 Promise / async 流程，并加上超时与重试策略。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">元素定位与可访问性</h3>
+            <p>仅靠 CSS 选择器可能不够稳定，可以结合 Accessibility Tree 信息，
+              让 AI 理解「这个按钮在语义上是什么」。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">安全与权限</h3>
+            <p>AI 能控制浏览器，也意味着可能访问敏感信息。
+              必须通过配置、沙箱和日志控制可用的域名与操作范围。</p>
+          </article>
+          <article class="panel-card">
+            <h3 class="panel-card-title">可观测性</h3>
+            <p>为 Server 本身加入日志与监控，知道每条指令的执行耗时、失败原因，
+              才能把这个控制室长期稳定地运转下去。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="cta-leon">
+        <div class="panel-header">
+          <h2 class="panel-title">想知道是谁在维护这间控制室？</h2>
+          <p class="panel-subtitle">下一步，可以切到 Leon 的视角，看看他的背景与动机。</p>
+        </div>
+        <div class="hero-actions" style="margin-top:10px;">
+          <a href="art-about-leon.html" class="btn-primary">认识 Leon</a>
+          <a href="art-index.html#ai-console" class="btn-ghost">回到 AI 控制浏览器</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <span>DevTools MCP · 工具编排层</span>
+      </div>
+      <div class="footer-right">
+        <a href="art-index.html">控制室首页</a>
+        <a href="art-gdg-devfest.html">GDG & DevFest</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
