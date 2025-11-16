@@ -1096,6 +1096,45 @@ body {
   }
 }
 
+/* 背景音乐控件（仅首页实际使用） */
+
+.bg-music {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.9);
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.bg-music-toggle {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.bg-music-toggle i {
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .bg-music {
+    display: none;
+  }
+}
+
 /* 引用与列表微调，让正文更接近博客园皮肤的质感 */
 
 .panel p {

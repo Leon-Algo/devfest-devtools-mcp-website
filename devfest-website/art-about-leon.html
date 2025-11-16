@@ -168,6 +168,51 @@
         <a href="art-devtools-mcp.html">DevTools MCP</a>
       </div>
     </footer>
+    <!-- 悬浮工具按钮（Leon 页配置） -->
+    <div class="float-toolbox" aria-label="页面工具">
+      <div class="float-btn-wrapper">
+        <button class="float-btn float-btn--primary" id="btn-scroll-top" aria-label="回到顶部">
+          <i class="ri-arrow-up-line"></i>
+        </button>
+        <div class="float-tooltip">回到顶部</div>
+      </div>
+      <div class="float-btn-wrapper">
+        <button class="float-btn" data-target="#stack" aria-label="常用技术栈">
+          <i class="ri-code-s-slash-line"></i>
+        </button>
+        <div class="float-tooltip">常用技术栈</div>
+      </div>
+      <div class="float-btn-wrapper">
+        <button class="float-btn" data-target="#pursuits" aria-label="关注的长期追求">
+          <i class="ri-compass-3-line"></i>
+        </button>
+        <div class="float-tooltip">长期追求</div>
+      </div>
+      <div class="float-btn-wrapper">
+        <a class="float-btn" href="mailto:2594041827@qq.com" aria-label="给 Leon 写信">
+          <i class="ri-mail-line"></i>
+        </a>
+        <div class="float-tooltip">给我写信</div>
+      </div>
+    </div>
   </div>
 </body>
+<script>
+  (function () {
+    var scrollTopBtn = document.getElementById('btn-scroll-top');
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    document.querySelectorAll('.float-btn[data-target]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = document.querySelector(btn.getAttribute('data-target'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
 </html>

@@ -151,6 +151,51 @@
         <a href="art-devtools-mcp.html">DevTools MCP</a>
       </div>
     </footer>
+    <!-- 悬浮工具按钮（GDG 页配置） -->
+    <div class="float-toolbox" aria-label="页面工具">
+      <div class="float-btn-wrapper">
+        <button class="float-btn float-btn--primary" id="btn-scroll-top" aria-label="回到顶部">
+          <i class="ri-arrow-up-line"></i>
+        </button>
+        <div class="float-tooltip">回到顶部</div>
+      </div>
+      <div class="float-btn-wrapper">
+        <button class="float-btn" data-target="#devfest" aria-label="跳到 DevFest 区域">
+          <i class="ri-flag-line"></i>
+        </button>
+        <div class="float-tooltip">DevFest 区域</div>
+      </div>
+      <div class="float-btn-wrapper">
+        <button class="float-btn" data-target="#cta-devtools" aria-label="下一步视图">
+          <i class="ri-arrow-right-line"></i>
+        </button>
+        <div class="float-tooltip">下一步：DevTools MCP</div>
+      </div>
+      <div class="float-btn-wrapper">
+        <a class="float-btn" href="mailto:2594041827@qq.com" aria-label="支持一下">
+          <i class="ri-heart-3-line"></i>
+        </a>
+        <div class="float-tooltip">支持一下</div>
+      </div>
+    </div>
   </div>
 </body>
+<script>
+  (function () {
+    var scrollTopBtn = document.getElementById('btn-scroll-top');
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    document.querySelectorAll('.float-btn[data-target]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = document.querySelector(btn.getAttribute('data-target'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
 </html>

@@ -273,9 +273,47 @@
                 <a href="devtools-mcp.html">查看技术细节页</a>
             </div>
         </footer>
+
+        <!-- 悬浮工具按钮（首页配置） -->
+        <div class="float-toolbox" aria-label="页面工具">
+            <div class="float-btn-wrapper">
+                <button class="float-btn float-btn--primary" id="btn-scroll-top" aria-label="回到顶部">
+                    <i class="ri-arrow-up-line"></i>
+                </button>
+                <div class="float-tooltip">回到顶部</div>
+            </div>
+            <div class="float-btn-wrapper">
+                <button class="float-btn" data-target="#pathway" aria-label="查看路径视图">
+                    <i class="ri-git-branch-line"></i>
+                </button>
+                <div class="float-tooltip">路径视图</div>
+            </div>
+            <div class="float-btn-wrapper">
+                <button class="float-btn" data-target="#leon" aria-label="关于 / 联系">
+                    <i class="ri-user-3-line"></i>
+                </button>
+                <div class="float-tooltip">关于 / 联系</div>
+            </div>
+            <div class="float-btn-wrapper">
+                <a class="float-btn" href="mailto:2594041827@qq.com" aria-label="支持一下">
+                    <i class="ri-heart-3-line"></i>
+                </a>
+                <div class="float-tooltip">支持一下</div>
+            </div>
+        </div>
+
+        <!-- 背景音乐（仅桌面端显示，替换 src 为你的音乐地址） -->
+        <div class="bg-music" aria-label="背景音乐">
+            <audio id="bg-audio" src="" loop></audio>
+            <button class="bg-music-toggle" type="button">
+                <i class="ri-play-fill"></i>
+                <span>播放背景音乐</span>
+            </button>
+        </div>
     </div>
 <script>
     (function () {
+        // 主题切换
         var root = document.documentElement;
         var toggle = document.getElementById('themeToggle');
         var stored = localStorage.getItem('artTheme');
@@ -288,6 +326,42 @@
         }
         if (toggle) {
             toggle.addEventListener('click', applyTheme);
+        }
+
+        // 悬浮按钮交互
+        var scrollTopBtn = document.getElementById('btn-scroll-top');
+        if (scrollTopBtn) {
+            scrollTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        document.querySelectorAll('.float-btn[data-target]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var target = document.querySelector(btn.getAttribute('data-target'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // 背景音乐控制
+        var audio = document.getElementById('bg-audio');
+        var toggleBtn = document.querySelector('.bg-music-toggle');
+        if (audio && toggleBtn) {
+            var playing = false;
+            toggleBtn.addEventListener('click', function () {
+                if (!playing) {
+                    audio.play();
+                    playing = true;
+                    toggleBtn.querySelector('i').className = 'ri-pause-fill';
+                    toggleBtn.querySelector('span').textContent = '暂停背景音乐';
+                } else {
+                    audio.pause();
+                    playing = false;
+                    toggleBtn.querySelector('i').className = 'ri-play-fill';
+                    toggleBtn.querySelector('span').textContent = '播放背景音乐';
+                }
+            });
         }
     })();
 </script>
