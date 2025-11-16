@@ -908,6 +908,73 @@ body {
   color: var(--accent-blue);
 }
 
+/* 右下悬浮按钮组（简化版 set_btn_box） */
+
+.float-toolbox {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.float-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.85);
+  cursor: pointer;
+  color: var(--text-soft);
+}
+
+.float-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 0.9);
+}
+
+.float-btn svg,
+.float-btn i {
+  font-size: 16px;
+}
+
+.float-btn--primary {
+  background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+  color: #0b1120;
+}
+
+.float-tooltip {
+  position: absolute;
+  right: 40px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  font-size: 11px;
+  color: var(--text-soft);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.float-btn-wrapper {
+  position: relative;
+}
+
+.float-btn-wrapper:hover .float-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* 轻微动效 */
 
 @keyframes signalFlow {
@@ -1021,6 +1088,11 @@ body {
   .footer-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .float-toolbox {
+    right: 5px;
+    bottom: 72px;
   }
 }
 
